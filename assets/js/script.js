@@ -200,3 +200,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 //  FAQ SECTION - ACCORDION
+
+// POPUP CONTACT SECTION
+document.addEventListener("DOMContentLoaded", function () {
+    let contactBtn = document.querySelector(".button-with-icon-faq");
+    let popup = document.getElementById("contact");
+    let closeBtn = document.querySelector(".close-btn-contact");
+
+    // Ketika tombol Contact Us diklik
+    contactBtn.addEventListener("click", function () {
+        popup.style.display = "flex"; // Tampilkan popup
+        // popup.classList.add("flex-contact");
+    });
+
+    closeBtn.addEventListener("click", function () {
+        let form = popup.querySelector(".form-contact");
+        form.classList.add("slide-out");
+
+        // Setelah animasi selesai, baru sembunyikan popup
+        form.addEventListener(
+            "animationend",
+            function () {
+                // popup.classList.remove("flex-contact");
+                popup.style.display = "none";
+                form.classList.remove("slide-out"); // reset agar bisa dipakai lagi nanti
+            },
+            { once: true }
+        );
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === popup) {
+            let form = popup.querySelector(".form-contact");
+            form.classList.add("slide-out");
+            form.addEventListener(
+                "animationend",
+                function () {
+                    // popup.classList.remove("flex-contact");
+                    popup.style.display = "none";
+                    form.classList.remove("slide-out");
+                },
+                { once: true }
+            );
+        }
+    });
+});
+// ## FAQ SECTION
